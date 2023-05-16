@@ -50,8 +50,7 @@ fs.open("./data.json", "wx+", (err,f) => {
     })
 })
 }
-functorun();
-setInterval(functorun, 60*1000);
+setInterval(functorun, 1000);
 
 
 app.get('/mondo', (req, res) => {
