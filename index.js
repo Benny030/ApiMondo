@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import * as fs from 'fs';
+import { dirname } from 'path';
 
 const app = express();
 const port = 3000;
@@ -28,7 +29,7 @@ app.get('/', (req, res) => {
 })
 
 
-const path= "./data.json";
+const path= __dirname + './data.json';
 
 //LETTURA FILE 
 fs.open( path , "wx+", (err,f) => {
