@@ -27,7 +27,10 @@ app.get('/', (req, res) => {
     res.send('Il server sta funzionando correttamente. \n Per visuallizzare tutti i dati basta andare al seguente ip: http://localhost:3000/Mondo')
 })
 
+function functorun() {
+	// inserire qui il codice da eseguire ad ogni ciclo
 
+    
 
 //LETTURA FILE 
 fs.open("./data.json", "wx+", (err,f) => {
@@ -46,6 +49,10 @@ fs.open("./data.json", "wx+", (err,f) => {
         else console.log("File WORLD Salvato!")
     })
 })
+}
+functorun();
+setInterval(functorun, 60*1000);
+
 
 app.get('/mondo', (req, res) => {
 
