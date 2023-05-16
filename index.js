@@ -30,9 +30,9 @@ app.get('/', (req, res) => {
 
 
 //LETTURA FILE 
-fs.open("../ApiRest WorldHomo/data.json", "wx+", (err,f) => {
+fs.open("./data.json", "wx+", (err,f) => {
     if(err){
-        fs.readFile("../ApiRest WorldHomo/data.json", (erro,data) => {
+        fs.readFile("./data.json", (erro,data) => {
             if(erro) console.error(erro);
             else {
                 console.log("Letto!");
@@ -41,7 +41,7 @@ fs.open("../ApiRest WorldHomo/data.json", "wx+", (err,f) => {
         });
         return;
     }
-    fs.writeFile("../ApiRest WorldHomo/data.json", JSON.stringify(mondo), (err) => {
+    fs.writeFile("./data.json", JSON.stringify(mondo), (err) => {
         if(err) console.error(err);
         else console.log("File WORLD Salvato!")
     })
