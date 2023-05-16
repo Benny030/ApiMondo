@@ -24,10 +24,6 @@ let mondo = [
 }]
 
 
-app.get('/', (req, res) => {
-    res.send('Il server sta funzionando correttamente. \n Per visuallizzare tutti i dati basta andare al seguente ip: http://localhost:3000/Mondo')
-})
-
 
 const path= __dirname + './data.json';
 
@@ -49,6 +45,9 @@ fs.open( path , "wx+", (err,f) => {
     })
 })
 
+app.get('/', (req, res) => {
+    res.send('Il server sta funzionando correttamente. \n Per visuallizzare tutti i dati basta andare al seguente ip: http://localhost:3000/Mondo')
+})
 app.get('/mondo', (req, res) => {
 
     const paesi = JSON.parse(JSON.stringify(mondo));
