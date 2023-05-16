@@ -28,12 +28,12 @@ app.get('/', (req, res) => {
 })
 
 
-
+const path= "./data.json";
 
 //LETTURA FILE 
-fs.open("./data.json", "wx+", (err,f) => {
+fs.open( path , "wx+", (err,f) => {
     if(err){
-        fs.readFile("./data.json", (erro,data) => {
+        fs.readFile( path , (erro,data) => {
             if(erro) console.error(erro);
             else {
                 console.log("Letto!");
@@ -42,7 +42,7 @@ fs.open("./data.json", "wx+", (err,f) => {
         });
         return;
     }
-    fs.writeFile("./data.json", JSON.stringify(mondo), (err) => {
+    fs.writeFile( path , JSON.stringify(mondo), (err) => {
         if(err) console.error(err);
         else console.log("File WORLD Salvato!")
     })
