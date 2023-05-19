@@ -37,12 +37,12 @@ fs.open("public/data.json", "wx+", (err, f) => {
             if (erro) console.error(erro);
             else {
                 console.log("Letto!");
-                films = JSON.parse(data);
+                mondo = JSON.parse(data);
             }
         });
         return;
     }
-        fs.writeFile("public/data.json", JSON.stringify(films), (err) => {
+        fs.writeFile("public/data.json", JSON.stringify(mondo), (err) => {
             if (err) console.error(err);
             else console.log("File FILM Salvato!")
         });
