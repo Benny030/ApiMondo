@@ -1,14 +1,20 @@
+//prima------
 import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
 import cors from 'cors';
-import * as fs from 'fs';
-import { dirname } from 'path';
 
 const app = express();
-const port = 3000;
+const PORT = 8080;
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+app.use(express.json());
 
 app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use( '/static', express.static(path.join(__dirname, 'public')),);
 
 
 
@@ -24,30 +30,28 @@ let mondo = [
 }]
 
 
-
-const path= __dirname + './data.json';
-
 //LETTURA FILE 
-fs.open( path , "wx+", (err,f) => {
-    if(err){
-        fs.readFile( path , (erro,data) => {
-            if(erro) console.error(erro);
+fs.open("public/data.json", "wx+", (err, f) => {
+    if (err) {
+        fs.readFile("public/data.json", (erro, data) => {
+            if (erro) console.error(erro);
             else {
                 console.log("Letto!");
-                mondo = JSON.parse(data);
+                films = JSON.parse(data);
             }
         });
         return;
     }
-    fs.writeFile( path , JSON.stringify(mondo), (err) => {
-        if(err) console.error(err);
-        else console.log("File WORLD Salvato!")
-    })
-})
+        fs.writeFile("public/data.json", JSON.stringify(films), (err) => {
+            if (err) console.error(err);
+            else console.log("File FILM Salvato!")
+        });
+});
 
 app.get('/', (req, res) => {
     res.send('Il server sta funzionando correttamente. \n Per visuallizzare tutti i dati basta andare al seguente ip: http://localhost:3000/Mondo')
 })
+
 app.get('/mondo', (req, res) => {
 
     const paesi = JSON.parse(JSON.stringify(mondo));
@@ -90,8 +94,7 @@ app.get('/mondo/:id', (req, res) => {
 
 
 
-
-
-
-
-app.listen(port, () => console.log("L'app sta funzionando"));
+app.listen(
+    PORT,
+    () => console.log("it'alive on http://localhost:8080")
+)
