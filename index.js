@@ -18,14 +18,14 @@ app.use( '/static', express.static(path.join(__dirname, 'public')),);
 
 
 let mondo = [
-{
-    "id": "0", 
+{ 
     "nome":  "Regno di Spagna",
     "capitale": "Madrid",
     "lingua": "Spagnolo",
     "continente": "Europe",
     "homolegale": "true",
-    "bandiera": "https://flagcdn.com/w320/es.png"
+    "bandiera": "https://flagcdn.com/w320/es.png",
+    "id": "0"
 }]
 
 
