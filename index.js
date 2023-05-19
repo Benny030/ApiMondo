@@ -12,7 +12,6 @@ const __dirname = path.dirname(__filename);
 
 
 app.use(express.json());
-
 app.use(cors());
 app.use( '/static', express.static(path.join(__dirname, 'public')),);
 
